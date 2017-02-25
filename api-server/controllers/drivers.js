@@ -26,6 +26,7 @@ module.exports = {
         let state = req.body.driver.state;
         Model.findByIdAndUpdate(req.params.id, { $set: { state: state } }, { new: true }, function(err, doc) {
             if (err) return res.status(500).send(err);
+            if (!doc) return res.status(404).end('not found');
             return res.status(200).send({
                 "data": {
                     "id": doc._id,
@@ -48,6 +49,7 @@ module.exports = {
             }
         }, { new: true }, function (err, doc) {
             if (err) return res.status(500).send(err);
+            if (!doc) return res.status(404).end('not found');
             let location = new Location({
                 uid: doc._id,
                 _type: 'driver',

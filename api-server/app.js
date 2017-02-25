@@ -4,22 +4,19 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 var requireDir = require('require-dir');
 
-var config = require('./config/db');
+var config = requireDir('./config/');
+mongoose.connect(config.db.mongodb);
 
-mongoose.connect(config.mongodb);
 requireDir('./models/');
-
-var drivers = require('./routes/drivers');
-var passengers = require('./routes/passengers');
-var requests = require('./routes/requests');
+var routes = requireDir('./routes/');
 
 var app = express();
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
-app.use('/drivers', drivers);
-app.use('/passengers', passengers);
-app.use('/requests', requests);
+app.use('/drivers', routes.drivers);
+app.use('/passengers', routes.passengers);
+app.use('/requests', routes.requests);
 
 app.listen(3000, function () {
     console.log('Gruber API listening on port 3000!')

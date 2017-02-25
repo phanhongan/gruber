@@ -10,6 +10,7 @@ module.exports = {
         });
         model.save(function(err, doc) {
             if (err) return res.status(500).send(err);
+            if (!doc) return res.status(404).end('not found');
             return res.status(200).send({
                 "data": {
                     "id": doc._id,
