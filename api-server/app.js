@@ -14,11 +14,14 @@ var app = express();
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
+app.get('/', function(req, res) {
+    return res.status(200).send('Welcome to Gruber API');
+});
 app.use('/drivers', routes.drivers);
 app.use('/passengers', routes.passengers);
 app.use('/requests', routes.requests);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-    console.log(`Gruber API listening on port ${port}!`)
+    console.log(`Gruber API listening on port ${port}!`);
 });
