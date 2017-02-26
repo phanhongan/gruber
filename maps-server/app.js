@@ -11,6 +11,6 @@ app.use(morgan('combined'));
 
 app.use('/google', google);
 
-app.listen(3001, function () {
+app.listen(process.env.PORT || 3001, function () {
     console.log('Maps Service listening on port 3001!')
 });

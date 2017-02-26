@@ -11,6 +11,6 @@ app.use(morgan('combined'));
 
 app.use('/locations', locations);
 
-app.listen(3002, function () {
-    console.log('Location Reports Service listening on port 3002!')
+app.listen(process.env.PORT || 3002, function () {
+    console.log('Location Reports Service listening on port 3002!');
 });

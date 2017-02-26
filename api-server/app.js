@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var requireDir = require('require-dir');
 
 var config = requireDir('./config/');
-mongoose.connect(config.db.mongodb);
+mongoose.connect(process.env.MONGODB_URI || config.db.mongodb);
 
 requireDir('./models/');
 var routes = requireDir('./routes/');
@@ -18,6 +18,7 @@ app.use('/drivers', routes.drivers);
 app.use('/passengers', routes.passengers);
 app.use('/requests', routes.requests);
 
-app.listen(3000, function () {
-    console.log('Gruber API listening on port 3000!')
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+    console.log(`Gruber API listening on port ${port}!`)
 });
