@@ -1,0 +1,19 @@
+{
+  "mappings": {
+    "location": {
+      "properties": {
+        "uid": {"type": "string"},
+        "location": {"type": "geo_point"},
+        "created_at": {"type": "date"},
+        "client_ip": {"type": "ip"},
+        "place_id": {"type": "string"},
+        "place_location": {"type": "geo_point"},
+        "full_address": {"type": "string"},
+        "street": {"type": "string"},
+        "ward": {"type": "string"},
+        "district": {"type": "string"},
+        "city": {"type": "string"}
+      }
+    }
+  }
+}
