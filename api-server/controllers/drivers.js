@@ -68,7 +68,7 @@ module.exports = {
                     }
                 });
 
-                // Push location data into a message queue
+                // TODO: Push location data into a message queue
             });
         });
     }
