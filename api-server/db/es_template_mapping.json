@@ -5,6 +5,7 @@
         "uid": {"type": "string"},
         "location": {"type": "geo_point"},
         "created_at": {"type": "date"},
+        "date_index": {"type": "integer"},
         "client_ip": {"type": "ip"},
         "place_id": {"type": "string"},
         "place_location": {"type": "geo_point"},
